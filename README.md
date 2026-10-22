@@ -443,5 +443,106 @@ This will works only for this namespace not for others
 
 <img width="2411" height="1026" alt="image" src="https://github.com/user-attachments/assets/c8417469-9326-426a-a468-2382cdd4275a" />
 
+<img width="2495" height="1195" alt="image" src="https://github.com/user-attachments/assets/e04a2c51-907e-4efe-87f0-48b0a2d816a9" />
 
+<img width="2520" height="1337" alt="image" src="https://github.com/user-attachments/assets/5c8a9feb-ed32-43c4-b07b-e2c4aecad037" />
+
+<img width="2471" height="1171" alt="image" src="https://github.com/user-attachments/assets/dc9f61ed-390b-4c96-8f8f-7e3281cf6fee" />
+
+<img width="964" height="1490" alt="image" src="https://github.com/user-attachments/assets/3c97bd6f-ba02-45e7-afaf-99f766fcd76b" />
+
+Login with same credentials which you have provided earlier
+
+<img width="2234" height="1372" alt="image" src="https://github.com/user-attachments/assets/b4fbb81c-8d89-42c3-887e-fa55a16655c4" />
+
+<img width="2520" height="1257" alt="image" src="https://github.com/user-attachments/assets/60e0783d-27c9-4ca3-b707-fc4aa42d19a5" />
+
+We can login with same credentials. But in production we have to create separate database
+
+Here mongodb will gives you only one database as free hence I have integrated same database 
+For final production deployment also 
+
+<img width="1636" height="818" alt="image" src="https://github.com/user-attachments/assets/a144f1df-7a41-441f-9b04-eb3ea55bec71" />
+
+<img width="2017" height="995" alt="image" src="https://github.com/user-attachments/assets/f2798a8d-82f8-4779-9374-d029e8ecaafe" />
+
+<img width="2546" height="1326" alt="image" src="https://github.com/user-attachments/assets/69ac8e9c-668e-4254-b9d0-d2be16acb627" />
+
+Now we can integrate monitoring: for that we have to install helm
+
+curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
+
+<img width="1946" height="289" alt="image" src="https://github.com/user-attachments/assets/991d2f5a-4c97-4f06-a0cb-d24d2ff9d6fc" />
+
+Install Helm Repos:
+
+helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+
+helm repo add grafana https://grafana.github.io/helm-charts
+
+helm repo update
+
+<img width="1370" height="432" alt="image" src="https://github.com/user-attachments/assets/7bec6a39-52e9-4ea3-8b1d-249fe427811c" />
+
+So now to install prometheus and grafana 
+
+Install Prometheus:
+
+helm install prometheus prometheus-community/kube-prometheus-stack —namespace monitoring  --create-namespace
+
+<img width="2397" height="738" alt="image" src="https://github.com/user-attachments/assets/2a167a8b-eafb-431f-9b79-9c9d61cd1521" />
+
+Install Grafana:
+
+helm install grafana grafana/grafana  --namespace monitoring
+
+<img width="2351" height="789" alt="image" src="https://github.com/user-attachments/assets/f0fd44f9-92a1-48dc-84bb-9d47a302f5bd" />
+
+Install metric server: kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml ( this metrics server is mandatory for spa service in kubernetes along with prometheus and grafana )
+
+<img width="1900" height="321" alt="image" src="https://github.com/user-attachments/assets/f809f901-6639-4372-a0b9-11c7077f70f1" />
+
+Check the svc of grafana
+
+<img width="1742" height="412" alt="image" src="https://github.com/user-attachments/assets/e6f2cd61-aee1-4801-be88-4b36293ee8c1" />
+
+Which is in clusterip, as we cannot access it through clusterip we need to patch 
+
+<img width="2534" height="348" alt="image" src="https://github.com/user-attachments/assets/16932666-e2d4-42e6-81a7-e0de1565d465" />
+
+<img width="2481" height="1262" alt="image" src="https://github.com/user-attachments/assets/4d88d32e-99f9-42b5-96eb-7ccddf3f28e4" />
+
+<img width="1992" height="1220" alt="image" src="https://github.com/user-attachments/assets/92a5aa40-fa74-43b8-94a1-a2a470e310de" />
+
+Add the data source
+
+<img width="2548" height="1159" alt="image" src="https://github.com/user-attachments/assets/8e8cf6b8-49b1-4dad-89eb-136e8a93b440" />
+
+<img width="2411" height="1026" alt="image" src="https://github.com/user-attachments/assets/0041ccc5-47e3-410b-8eec-d5f6c84dba3b" />
+
+Provide this url-> Prometheus cluster url :
+
+http://prometheus-kube-prometheus-prometheus.monitoring.svc.cluster.local:9090
+
+<img width="2550" height="1123" alt="image" src="https://github.com/user-attachments/assets/43ac7fc7-04c5-46a2-a397-a847530ba8fa" />
+
+<img width="2507" height="1399" alt="image" src="https://github.com/user-attachments/assets/3595eecd-360a-4432-a3e3-e696e989cb6b" />
+
+Import the standard dashboards 6417, 
+
+<img width="1386" height="1118" alt="image" src="https://github.com/user-attachments/assets/2852d5b1-4adf-4fb5-831f-61ab71166da0" />
+
+Click on load, select prometheus and import
+
+<img width="1541" height="981" alt="image" src="https://github.com/user-attachments/assets/dec8c2f3-37f3-4b5e-939e-c9348c962392" />
+
+<img width="2535" height="1425" alt="image" src="https://github.com/user-attachments/assets/cce7475f-d39b-4f68-a564-9703e4385f92" />
+
+<img width="2538" height="1413" alt="image" src="https://github.com/user-attachments/assets/efa1ad27-c4ca-4480-8feb-6bc13b65b218" />
+
+To see the nodes port number is 1860 has to be import
+
+<img width="1531" height="1050" alt="image" src="https://github.com/user-attachments/assets/d4cefb41-1f3d-404d-a0ec-dca8ef79b1f6" />
+
+<img width="2544" height="1438" alt="image" src="https://github.com/user-attachments/assets/9225af5d-e66e-436d-9661-939ba06e294c" />
 
