@@ -348,13 +348,13 @@ Now we have to include all these encoded values in the secret.yml file
 
 First we have to install EKS CTL 
 
-# for ARM systems, set ARCH to: `arm64`, `armv6` or `armv7`
+for ARM systems, set ARCH to: `arm64`, `armv6` or `armv7`
 ARCH=$(uname -m | sed 's/x86_64/amd64/' | sed 's/aarch64/arm64/')
 PLATFORM=$(uname -s)_$ARCH
 
 curl -sLO "https://github.com/eksctl-io/eksctl/releases/latest/download/eksctl_$PLATFORM.tar.gz"
 
-# (Optional) Verify checksum
+(Optional) Verify checksum
 curl -sL "https://github.com/eksctl-io/eksctl/releases/latest/download/eksctl_checksums.txt" | grep $PLATFORM | sha256sum --check
 
 tar -xzf eksctl_$PLATFORM.tar.gz -C /tmp && rm eksctl_$PLATFORM.tar.gz
@@ -364,9 +364,11 @@ sudo install -m 0755 /tmp/eksctl /usr/local/bin && rm /tmp/eksctl
 <img width="1458" height="788" alt="image" src="https://github.com/user-attachments/assets/bb312843-8e5c-4b5e-8a82-5dd173b20f7c" />
 
 curl -O https://s3.us-west-2.amazonaws.com/amazon-eks/1.36.2/2026-07-05/bin/linux/amd64/kubectl
+
 To login to our cluster, to switch from one cluster to another cluster: 
 
 aws eks update-kubeconfig --region us-east-1 --name EKS_CLOUD
+
 Once that context was added then only we can see eks nodes
 
 <img width="1942" height="662" alt="image" src="https://github.com/user-attachments/assets/f1f96c1b-0a69-403e-944d-d64595da059d" />
@@ -390,6 +392,7 @@ Login with same credentials which you have provided earlier
 We can login with same credentials. But in production we have to create separate database
 
 Here mongodb will gives you only one database as free hence I have integrated same database 
+
 For final production deployment also 
 
 <img width="1636" height="818" alt="image" src="https://github.com/user-attachments/assets/a420f554-0d4a-4d6c-9013-634c41b8bd34" />
@@ -404,7 +407,8 @@ For final production deployment also
 
 Once the cluster was created we have to create the namespace. Inside that namespace all the resources will be created from pipeline
 
-Our manifest files are there in GitHub. To get them into pipeline and execute into that namespace we have to create service account for this namespace, role & role-binding and create an secret and integrate with it.
+Our manifest files are there in GitHub. To get them into pipeline and execute into that namespace we have to create service account for this namespace, 
+role & role-binding and create an secret and integrate with it.
 
 <img width="334" height="160" alt="image" src="https://github.com/user-attachments/assets/c8d65782-47ad-4257-9e2a-a1cdbdf421c6" />
 
@@ -431,11 +435,13 @@ Means all the configurations in MyDeployment will be copied to FinalDeployment-P
 <img width="2543" height="472" alt="image" src="https://github.com/user-attachments/assets/210e6065-9557-445e-b72b-43455ca01ded" />
 
 Now we have to store the credentials 
-As we have created the secret get that secret text 
+
+As we have created the secret, get that secret text 
 
 <img width="2139" height="588" alt="image" src="https://github.com/user-attachments/assets/7f6d6009-8384-43b1-ad61-ace21f96d778" />
 
 This is required because jenkins has to integrate with kubernetes with that namespace
+
 This will works only for this namespace not for others
 
 <img width="2411" height="1026" alt="image" src="https://github.com/user-attachments/assets/c8417469-9326-426a-a468-2382cdd4275a" />
@@ -457,6 +463,7 @@ Login with same credentials which you have provided earlier
 We can login with same credentials. But in production we have to create separate database
 
 Here mongodb will gives you only one database as free hence I have integrated same database 
+
 For final production deployment also 
 
 <img width="1636" height="818" alt="image" src="https://github.com/user-attachments/assets/a144f1df-7a41-441f-9b04-eb3ea55bec71" />
