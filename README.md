@@ -171,11 +171,7 @@ So we can pass these values while creating the container and also we can pass it
 
 <img width="2552" height="546" alt="image" src="https://github.com/user-attachments/assets/43808ea9-46ee-48d5-ad46-e3e1dd0259be" />
 
-yum install java-21-amazon-corretto -y
-sudo wget -O /etc/yum.repos.d/jenkins.repo     https://pkg.jenkins.io/rpm-stable/jenkins.repo
-yum install jenkins -y
-systemctl start jenkins
-systemctl status jenkins
+Install Jenkins and Access it with port number: 8080
 
 <img width="2559" height="452" alt="image" src="https://github.com/user-attachments/assets/822ac997-fc0c-4b46-81ad-eb916f9e33ce" />
 
