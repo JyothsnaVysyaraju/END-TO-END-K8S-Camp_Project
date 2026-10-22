@@ -1,1 +1,140 @@
-pipeline
+pipeline{
+
+    agent any
+
+    environment {
+
+        SCANNER_HOME = tool 'mysonar'
+    }
+
+
+    stages {
+
+
+        stage('Git Checkout') {
+
+            steps {
+
+                git branch:'main',url: 'https://github.com/JyothsnaVysyaraju/END-TO-END-K8S-Camp_Project.git'
+
+            }
+
+        }
+
+
+        stage('SonarQube'){
+
+            steps {
+
+                withSonarQubeEnv('mysonar') {
+
+                    sh """
+
+                        ${SCANNER_HOME}/bin/sonar-scanner \
+
+                        -Dsonar.projectKey=CampProject \
+
+                        -Dsonar.projectName=CampProject
+
+                    """
+
+                }
+
+            }
+
+        }
+
+        stage ("Quality Gates") {
+
+            steps {
+
+                script {
+
+                    waitForQualityGate abortPipeline:false, credentialsId:'sonar'
+
+                }
+
+            }
+
+        }
+
+
+        stage('Docker Build & Tag') {
+
+            steps {
+
+                script {
+
+                    withDockerRegistry(credentialsId:'docker-cred', toolName:'docker') {
+
+                        sh "docker build -t jyothsnav/testcamp:v1 ."
+
+                    }
+
+                }
+
+            }
+
+        }
+
+
+        stage('Trivy Image Scan') {
+
+            steps {
+
+                sh "trivy image --format table -o image-report.html jyothsnav/testcamp:v1"
+
+            }
+
+        }
+
+
+        stage('Docker Push Image') {
+
+            steps {
+
+                script {
+
+                    withDockerRegistry(credentialsId:'docker-cred', toolName:'docker') {
+
+                        sh "docker push jyothsnav/testcamp:v1"
+
+                    }
+
+                }
+
+            }
+
+        }
+
+
+        stage('Deploy on EKS') {
+
+            steps {
+
+                withKubeCredentials(kubectlCredentials: [[caCertificate: '', clusterName: 'EKS_CLOUD', contextName: '', credentialsId: 'k8-token', namespace: 'webapps', serverUrl: 'https://amazonaws.com']]) {
+                sh 'kubectl apply -f Manifest/'
+                } 
+
+            }
+
+        }
+
+    }
+
+    post {
+
+        always {
+
+           mail to: 'vysyarajujyothsna3@gmail.com',
+
+           subject: "SUCCESS: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+
+          body: "*${currentBuild.currentResult}:* Job ${env.JOB_NAME} \n build ${env.BUILD_NUMBER} \n More info at: ${env.BUILD_URL}"
+
+
+        }
+
+    }
+
+}
