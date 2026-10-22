@@ -26,7 +26,7 @@ pipeline{
 
             steps {
 
-                git branch:'main',url: 'https://github.com/devops0014/3-Tier-Full-Stack-yelp-camp.git'
+                git branch:'main',url: 'https://github.com/JyothsnaVysyaraju/END-TO-END-K8S-Camp_Project.git'
 
             }
 
@@ -78,7 +78,7 @@ pipeline{
 
                     withDockerRegistry(credentialsId:'docker-cred', toolName:'docker') {
 
-                        sh "docker build -t shaikmustafa/testcamp:latest ."
+                        sh "docker build -t jyothsnav/testcamp:v1 ."
 
                     }
 
@@ -93,7 +93,7 @@ pipeline{
 
             steps {
 
-                sh "trivy image --format table -o image-report.html shaikmustafa/testcamp:latest"
+                sh "trivy image --format table -o image-report.html jyothsnav/testcamp:v1"
 
             }
 
@@ -108,7 +108,7 @@ pipeline{
 
                     withDockerRegistry(credentialsId:'docker-cred', toolName:'docker') {
 
-                        sh "docker push jyothsnav/testcamp:latest"
+                        sh "docker push jyothsnav/testcamp:v1"
 
                     }
 
@@ -149,7 +149,7 @@ pipeline{
 
         always {
 
-           mail to: 'awsanddevops18@gmail.com',
+           mail to: 'vysyarajujyothsna3@gmail.com',
 
            subject: "SUCCESS: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
 
