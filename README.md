@@ -376,6 +376,33 @@ Once that context was added then only we can see eks nodes
 
 Once that context was added then only we can see eks nodes
 
+<img width="2495" height="1195" alt="image" src="https://github.com/user-attachments/assets/9697a108-b72c-495a-ba67-b70cf93d7de0" />
+
+<img width="2520" height="1337" alt="image" src="https://github.com/user-attachments/assets/acd8abab-f147-4ee9-bf5e-d7ab9bb9dabb" />
+
+<img width="2471" height="1171" alt="image" src="https://github.com/user-attachments/assets/26008386-84bc-4aaf-ae74-75075b8e122b" />
+
+<img width="2541" height="1109" alt="image" src="https://github.com/user-attachments/assets/db4c304d-5925-4b0f-9c47-080c7e5c8673" />
+
+Login with same credentials which you have provided earlier
+
+<img width="2520" height="1257" alt="image" src="https://github.com/user-attachments/assets/c046c5c4-defd-476e-8671-36e298e99ec7" />
+
+<img width="2234" height="1372" alt="image" src="https://github.com/user-attachments/assets/8bb76f98-daf9-4ef9-8100-40064d142e3f" />
+
+We can login with same credentials. But in production we have to create separate database
+
+Here mongodb will gives you only one database as free hence I have integrated same database 
+For final production deployment also 
+
+<img width="1636" height="818" alt="image" src="https://github.com/user-attachments/assets/a420f554-0d4a-4d6c-9013-634c41b8bd34" />
+
+<img width="2017" height="995" alt="image" src="https://github.com/user-attachments/assets/d56e8e17-9e07-4f7e-8d63-cfd2b5d562f8" />
+
+<img width="748" height="780" alt="image" src="https://github.com/user-attachments/assets/d4b66be3-151f-40bc-8b2f-be04da43318f" />
+
+
+
 <img width="1183" height="157" alt="image" src="https://github.com/user-attachments/assets/8238dbc7-4d0a-4ea8-a6eb-762e6fe1164a" />
 
 Once the cluster was created we have to create the namespace. Inside that namespace all the resources will be created from pipeline
