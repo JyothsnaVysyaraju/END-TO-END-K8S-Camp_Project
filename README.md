@@ -266,7 +266,7 @@ Container was created but it is not in running state
 
 <img width="2143" height="301" alt="image" src="https://github.com/user-attachments/assets/e4cbebb8-4bbb-4cc8-b4a3-e48fd92907a7" />
 
-<img width="2143" height="301" alt="image" src="https://github.com/user-attachments/assets/9a4f9fdc-8316-4ab8-8a1e-b2dc1d07af23" />
+<img width="1437" height="796" alt="image" src="https://github.com/user-attachments/assets/ed49082f-3c3b-4586-8de5-77140e27affc" />
 
 Tokens related to mapbox, cloundinary and mongo were missing hence container was not running 
 
