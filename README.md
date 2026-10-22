@@ -466,17 +466,17 @@ Here mongodb will gives you only one database as free hence I have integrated sa
 
 For final production deployment also 
 
-<img width="1636" height="818" alt="image" src="https://github.com/user-attachments/assets/a144f1df-7a41-441f-9b04-eb3ea55bec71" />
+<img width="1636" height="818" alt="image" src="https://github.com/user-attachments/assets/5c31a035-f7ca-4a02-9d0d-ab3fd902d718" />
 
-<img width="2017" height="995" alt="image" src="https://github.com/user-attachments/assets/f2798a8d-82f8-4779-9374-d029e8ecaafe" />
+<img width="2017" height="995" alt="image" src="https://github.com/user-attachments/assets/6147fd7a-22e2-40a6-9df9-4f0f2cee3057" />
 
-<img width="2546" height="1326" alt="image" src="https://github.com/user-attachments/assets/69ac8e9c-668e-4254-b9d0-d2be16acb627" />
+<img width="2546" height="1326" alt="image" src="https://github.com/user-attachments/assets/e7ea0cae-76b4-403c-a534-c90db952e864" />
 
 Now we can integrate monitoring: for that we have to install helm
 
 curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
 
-<img width="1946" height="289" alt="image" src="https://github.com/user-attachments/assets/991d2f5a-4c97-4f06-a0cb-d24d2ff9d6fc" />
+<img width="1946" height="289" alt="image" src="https://github.com/user-attachments/assets/460a1aa8-1144-4bbc-9d53-5588b12dc038" />
 
 Install Helm Repos:
 
