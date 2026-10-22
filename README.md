@@ -321,6 +321,7 @@ Attach the IAM permissions to existing EC2 instance so that we can access the aw
 Once the infra was created, now we have to configure the manifest files for EKS
 
 For Application Deployment -> Deployment.yml is required 
+
 Generally for database we will use statefulset but here for this Project we have configured mongo cloud
 
 If this application needs high availability we have to create HPA ( horizontal pod autoscaling )
